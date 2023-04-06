@@ -22,7 +22,7 @@ sudo ./install-driver.sh
 ~~~
 
 - install bluetooth packages
-  - `apt-get install -y bluez bluez-tools blueman
+  - `apt-get install -y bluez bluez-tools blueman`
     - `systemctl status bluetooth.service`
 - Why the user can see any bluetooth devices?
   - the user might not have access to bluetooth (need to be in the `bluetooth` group)
