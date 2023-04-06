@@ -1,0 +1,53 @@
+- id: '1671744914924'
+  alias: Water Leakage
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - binary_sensor.boiler_water_leak
+    - binary_sensor.hvac_water_leak
+    - binary_sensor.garage_water_leak
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 3
+  condition: []
+  action:
+  - service: rest_command.pd_critical_message
+    data:
+      message: Water leakage detected - {{ trigger.to_state.attributes.friendly_name
+        }}
+      custom_details: '{{ trigger.to_state.attributes }}'
+  mode: single
+- id: '1671745627222'
+  alias: Dehumidifier Critical Conditions
+  description: ''
+  trigger:
+  - type: problem
+    platform: device
+    device_id: 4ab94be562944c840de7549ad2cc2921
+    entity_id: binary_sensor.dehumidifier_f086_tank_full
+    domain: binary_sensor
+  - type: problem
+    platform: device
+    device_id: 4ab94be562944c840de7549ad2cc2921
+    entity_id: binary_sensor.dehumidifier_f086_tank_removed
+    domain: binary_sensor
+  - type: problem
+    platform: device
+    device_id: 4ab94be562944c840de7549ad2cc2921
+    entity_id: binary_sensor.dehumidifier_f086_replace_filter
+    domain: binary_sensor
+  - platform: device
+    type: turned_off
+    device_id: 4ab94be562944c840de7549ad2cc2921
+    entity_id: humidifier.dehumidifier_f086
+    domain: humidifier
+  condition: []
+  action:
+  - service: rest_command.pd_critical_message
+    data:
+      message: Dehumidifier needs attention
+      custom_detail: '{{ trigger.event }}'
+  mode: single

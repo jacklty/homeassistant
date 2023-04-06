@@ -1,0 +1,103 @@
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+rest_command:
+  pd_critical_message:
+    url: https://events.pagerduty.com/v2/enqueue
+    method: post
+    payload: >-
+      {
+        "routing_key":"XXXXXXXXXXXXXXXXXXXXXXXXX",
+        "event_action":"trigger",
+        "payload":
+        {
+          "summary":"{{ message }}",
+          "custom_details":"{{ custom_details }}",
+          "source":"homeassistant.blahblah.com",
+          "severity":"critical"
+        }
+      }
+  pd_info_message:
+    url: https://events.pagerduty.com/v2/enqueue
+    method: post
+    payload: >-
+      {
+        "routing_key":"XXXXXXXXXXXXXXXXXXXXXXXXX",
+        "event_action":"trigger",
+        "payload":
+        {
+          "summary":"{{ message }}",
+          "custom_details":"{{ custom_details }}",
+          "source":"homeassistant.blahblah.com",
+          "severity":"info"
+        }
+      }
+
+mqtt:
+  sensor:
+  - name: Outside Temperature
+    unique_id: "acurite_15199_temperature"
+    device_class: temperature
+    unit_of_measurement: '°C'
+    value_template: '{{ value_json.temperature_C }}'
+    state_topic: rtl_433/Acurite-Tower/15199
+    json_attributes_topic: rtl_433/Acurite-Tower/15199
+  - name: Outside Humidity
+    unique_id: "acurite_15199_humidity"
+    device_class: humidity
+    unit_of_measurement: '%'
+    value_template: '{{ value_json.humidity }}'
+    state_topic: rtl_433/Acurite-Tower/15199
+    json_attributes_topic: rtl_433/Acurite-Tower/15199
+  - name: Ambient Weather Temperature
+    unique_id: "ambientweather_142_temperature"
+    device_class: temperature
+    unit_of_measurement: '°F'
+    value_template: '{{ value_json.temperature_F }}'
+    state_topic: rtl_433/Ambientweather-F007TH/142
+    json_attributes_topic: rtl_433/Ambientweather-F007TH/142
+  - name: Ambient Weather Humidity
+    unique_id: "ambientweather_142_humidity"
+    device_class: humidity
+    unit_of_measurement: '%'
+    value_template: '{{ value_json.humidity }}'
+    state_topic: rtl_433/Ambientweather-F007TH/142
+    json_attributes_topic: rtl_433/Ambientweather-F007TH/142
+  binary_sensor:
+  - name: Boiler Water Leak
+    unique_id: 63836_govee_water
+    device_class: moisture
+    payload_on: Water Leak
+    payload_off: Button Press
+    value_template: '{{ value_json.event }}'
+    state_topic: rtl_433/Govee-Water/63836
+    json_attributes_topic: rtl_433/Govee-Water/63836
+  - name: HVAC Water Leak
+    unique_id: 63980_govee_water
+    device_class: moisture
+    payload_on: Water Leak
+    payload_off: Button Press
+    value_template: '{{ value_json.event }}'
+    state_topic: rtl_433/Govee-Water/63980
+    json_attributes_topic: rtl_433/Govee-Water/63980
+  - name: Garage Water Leak
+    unique_id: 63976_govee_water
+    device_class: moisture
+    payload_on: Water Leak
+    payload_off: Button Press
+    value_template: '{{ value_json.event }}'
+    state_topic: rtl_433/Govee-Water/63976
+    json_attributes_topic: rtl_433/Govee-Water/63976
