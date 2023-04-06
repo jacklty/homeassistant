@@ -139,8 +139,7 @@ WantedBy=multi-user.target
   sudo make install
   ```
 - connect rtl_433 to mqtt broker
-  ~~~
-  ~~~
+  See https://github.com/jacklty/homeassistant/blob/master/etc/systemd/system/rtl_433.service and 
 
 ### MQTT and Mosquitto
 - `apt-get install -y mosquitto mosquitto-client`
