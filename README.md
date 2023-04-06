@@ -1,5 +1,5 @@
-# Setup Libre Le Potato - AML-S905X-CC (64-bit)
-- This mini motherboard shares the same form size with Raspberry-pi 3B but with faster cpu and more memory.
+# Setup [Libre Le Potato - AML-S905X-CC (64-bit)](https://www.amazon.com/Libre-Computer-AML-S905X-CC-Potato-64-bit/dp/B074P6BNGZ/ref=sr_1_2?crid=23XUBHWHW39CB&keywords=Libre+Le+Potato+-+AML-S905X-CC&qid=1680817463&sprefix=libre+le+potato+-+aml-s905x-cc%2Caps%2C106&sr=8-2)
+- This mini motherboard shares the same form size with Raspberry-pi 3B but with a faster cpu and much more memory.
 - The official website provide either ubuntu image and raspbian image
   - raspbian seems less bulky and works pretty well with all hw components as well as Home Assistant Core
   - Highly recommended to use a faster micro sd-card or use eMMC Module (IO is pretty slow)
@@ -155,7 +155,7 @@ WantedBy=multi-user.target
   - https://github.com/jacklty/homeassistant/blob/master/etc/rtl_433/service.conf
 
 ### Midea Dehumidifier
-- You would need to have the devices first add to the Midea Air App with a cloud account (not with Apple ID or facebook)
+- You would need to have the devices first added to the Midea Air App via a cloud account (not with Apple ID or facebook)
   - User: admin@compulty.com
   - Password: <Hint: first date of internet and plain old password>
   - You can always share them later to different Midea Accounts/Users
