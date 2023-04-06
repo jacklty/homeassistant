@@ -105,42 +105,6 @@ WantedBy=multi-user.target
 
 ## Custom Integration
 
-### Midea Dehumidifier
-- You would need to have the devices first add to the Midea Air App with a cloud account (not with Apple ID or facebook)
-  - User: admin@compulty.com
-  - Password: <Hint: first date of internet and plain old password>
-  - You can always share them later to different Midea Accounts/Users
-- As with Core, you need to install it manually
-  ~~~
-  # As the `homeassistant` user
-  sudo -u homeassistant -H -s
-  cd ~
-  # Obtain the custom integration for Midea
-  git clone https://github.com/nbogojevic/homeassistant-midea-air-appliances-lan
-  mkdir -p ~/.homeassistant/custom_components
-  # Copy the custom integration to Home Assistant Config folder
-  cp -R homeassistant-midea-air-appliances-lan/custom_components/midea_dehumidifier_lan ~/.homeassistant/custom_components
-  ~~~
-- Restart `Home Assistant` to pick up new integration
-
-## Radio SDR rtl-433
-- ```
-  apt-get install libtool libusb-1.0-0-dev librtlsdr-dev rtl-sdr build-essential autoconf cmake pkg-config
-  ```
-- https://www.switchdoc.com/2020/11/tutorial-raspberrypi-433mhz-weatherrack2-2/
-  ```
-  cd ~
-  git clone https://github.com/merbanan/rtl_433.git
-  cd rtl_433
-  mkdir build
-  cd build
-  cmake ..
-  make
-  sudo make install
-  ```
-- connect rtl_433 to mqtt broker
-  See https://github.com/jacklty/homeassistant/blob/master/etc/systemd/system/rtl_433.service and 
-
 ### MQTT and Mosquitto
 - `apt-get install -y mosquitto mosquitto-client`
 - `systemctl status mosquitto`
@@ -170,6 +134,43 @@ WantedBy=multi-user.target
     `mosquitto_sub -h localhost -v -t \#`
   - send a message
     `mosquitto_pub -h localhost -t testing/123 -m {\"status\":\"OFF\"}`
+
+### Radio SDR rtl-433
+- ```
+  apt-get install libtool libusb-1.0-0-dev librtlsdr-dev rtl-sdr build-essential autoconf cmake pkg-config
+  ```
+- https://www.switchdoc.com/2020/11/tutorial-raspberrypi-433mhz-weatherrack2-2/
+  ```
+  cd ~
+  git clone https://github.com/merbanan/rtl_433.git
+  cd rtl_433
+  mkdir build
+  cd build
+  cmake ..
+  make
+  sudo make install
+  ```
+- connect rtl_433 to mqtt broker
+  - https://github.com/jacklty/homeassistant/blob/master/etc/systemd/system/rtl_433.service
+  - https://github.com/jacklty/homeassistant/blob/master/etc/rtl_433/service.conf
+
+### Midea Dehumidifier
+- You would need to have the devices first add to the Midea Air App with a cloud account (not with Apple ID or facebook)
+  - User: admin@compulty.com
+  - Password: <Hint: first date of internet and plain old password>
+  - You can always share them later to different Midea Accounts/Users
+- As with Core, you need to install it manually
+  ~~~
+  # As the `homeassistant` user
+  sudo -u homeassistant -H -s
+  cd ~
+  # Obtain the custom integration for Midea
+  git clone https://github.com/nbogojevic/homeassistant-midea-air-appliances-lan
+  mkdir -p ~/.homeassistant/custom_components
+  # Copy the custom integration to Home Assistant Config folder
+  cp -R homeassistant-midea-air-appliances-lan/custom_components/midea_dehumidifier_lan ~/.homeassistant/custom_components
+  ~~~
+- Restart `Home Assistant` to pick up new integration
 
 # piVPN
 - 
