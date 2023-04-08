@@ -78,7 +78,7 @@ sudo ./install-driver.sh
   ~~~
 
 ### Install Home Assistant Core
-- Follow the official doc
+- Follow [the official doc](https://www.home-assistant.io/installation/linux#install-home-assistant-core)
 - Additional packages
   - `apt-get install -y ffmpeg` for Ring Integration
 
