@@ -16,8 +16,7 @@
   action:
   - service: rest_command.pd_critical_message
     data:
-      message: Water leakage detected - {{ trigger.to_state.attributes.friendly_name
-        }}
+      message: Water leakage detected - {{ trigger.to_state.attributes.friendly_name }}
       custom_details: '{{ trigger.to_state.attributes }}'
   mode: single
 - id: '1671745627222'
