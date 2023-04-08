@@ -10,9 +10,9 @@
   - `/etc/hosts`
   - Or `hostnamectl set-hostname new-hostname` and confirm with `hostnamectl`
 
-# Wifi `Cudy AC650` and `Ausconumer AC600 + BT`
+## Wifi `Cudy AC650` and `Asusconumer AC600 + BT`
 
-## Build & Install the Device Driver for rtl8821cu
+### Build & Install the Device Driver for rtl8821cu
 ~~~
 git clone https://github.com/morrownr/8821cu-20210118
 cd 8821cu-20210118
@@ -31,7 +31,7 @@ sudo ./install-driver.sh
   - You should be able use `bluetoothctl` to list and scan
     - `lsusb` should show you the usb bt receiver and you should see bt firmware loading in `dmesg`
 
-## Configure wifi connection
+### Configure wifi connection
 - Reference: https://wiki.archlinux.org/title/wpa_supplicant
 -  Scan for SSIDs
   `iwlist wlan0 scans`
@@ -59,12 +59,11 @@ sudo ./install-driver.sh
 - To restart wlan0: `ifdown wlan0 && ifup wlan0`
 - Check status: `interface wlan0`
  
-# Home Assistant Core via systemd
-
 ## ASUS BT500 Firmware
 - The firmware for this bluetooth dongle very likely is missing on raspbian
 - run `lsusb` and you would see the ASUS BT500 device (but not working)
 - run `dmesg` and you will see firemware missing for that bluetooth dongle
+
 ### How to get the missing firmware?
 - ASUS does not have firmware for linux but we are luckily enough to get it from mpow
   - Direct download (might change): https://cdn.shopify.com/s/files/1/0249/2891/1420/files/20201202_BH456A_driverforLinux-1_0929.7z?v=1664445632
@@ -76,12 +75,13 @@ sudo ./install-driver.sh
   sudo ln -s rtl8761b_config.bin rtl8761bu_config.bin
   sudo ln -s rtl8761b_fw.bin rtl8761bu_fw.bin
   ~~~
+  
+# Home Assistant Core via systemd
 
-### Install Home Assistant Core
+## Install Home Assistant Core
 - Follow [the official doc](https://www.home-assistant.io/installation/linux#install-home-assistant-core)
 - Additional packages
   - `apt-get install -y ffmpeg` for Ring Integration
-
 
 ### Systemd unit
 - `cat /etc/systemd/system/home-assistant\@homeassistant.service`
@@ -172,7 +172,9 @@ WantedBy=multi-user.target
   ~~~
 - Restart `Home Assistant` to pick up new integration
 
-# piVPN
+# Misc.
+
+## piVPN
 - 
   ~~~
   curl -L https://install.pivpn.io | bash
@@ -182,7 +184,7 @@ WantedBy=multi-user.target
 - iptables rules can be found in `/etc/iptables/rules.v4`
   - make sure the postrouting rules are using the correct inet otherwise clients can't access the internet (or local network)
 
-# ddclient and google domain
+## ddclient and google domain
 - 
   ~~~
   apt-get install ddclient
@@ -198,7 +200,7 @@ WantedBy=multi-user.target
   fishylake.compulty.com
   ~~~
 
-# Let's Encrypted
+## Let's Encrypted
 - 
   ~~~
   sudo apt install certbot
