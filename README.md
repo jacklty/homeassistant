@@ -199,7 +199,11 @@ WantedBy=multi-user.target
   password=... \
   fishylake.compulty.com
   ~~~
-
+### How to manually update DDNS?
+```
+# Obtain the corresponding credential of the DDNS record.
+curl "https://${LOGIN}:${PASSWORD}@domains.google.com/nic/update?hostname=fishylake.compulty.com&myip=$(curl ipconfig.io)"
+```
 ## Let's Encrypted
 - 
   ~~~
