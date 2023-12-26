@@ -208,4 +208,6 @@ curl "https://${LOGIN}:${PASSWORD}@domains.google.com/nic/update?hostname=fishyl
 - 
   ~~~
   sudo apt install certbot
+  sudo certbot certonly --manual --preferred-challenges dns -d fishylake.compulty.com
+  # follow the instruction to update the TXT record to complete the verification
   ~~~
