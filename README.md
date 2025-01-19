@@ -211,7 +211,8 @@ curl "https://${LOGIN}:${PASSWORD}@domains.google.com/nic/update?hostname=fishyl
   sudo certbot certonly --manual --preferred-challenges dns -d fishylake.compulty.com
   # follow the instruction to update the TXT record to complete the verification
   ~~~
-# Homebridge
+# Amazon Smart Thermostat thru Homebridge
+## Homebridge
 https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-Debian-or-Ubuntu-Linux
 ~~~
 curl -sSfL https://repo.homebridge.io/KEY.gpg | sudo gpg --dearmor | sudo tee /usr/share/keyrings/homebridge.gpg  > /dev/null
@@ -221,6 +222,9 @@ sudo apt-get install homebridge
 systemctl status homebridge
 ~~~
 Login to the web interface by going to http://<ip address of your server>:8581.
+
+## homebridge-alexa-smarthome
+To bring Alexa enabled devices into homebridge, we need [homebridge-alexa-smarthome](https://github.com/joeyhage/homebridge-alexa-smarthome)
 
 # Key Error
 - If `apt-get update` errors out about `The following signatures were invalid: EXPKEYSIG 2E5FB7FC58C58FFB deb.libre.computer <contact+deb@libre.computer>`
