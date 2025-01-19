@@ -211,3 +211,21 @@ curl "https://${LOGIN}:${PASSWORD}@domains.google.com/nic/update?hostname=fishyl
   sudo certbot certonly --manual --preferred-challenges dns -d fishylake.compulty.com
   # follow the instruction to update the TXT record to complete the verification
   ~~~
+# Homebridge
+https://github.com/homebridge/homebridge/wiki/Install-Homebridge-on-Debian-or-Ubuntu-Linux
+~~~
+curl -sSfL https://repo.homebridge.io/KEY.gpg | sudo gpg --dearmor | sudo tee /usr/share/keyrings/homebridge.gpg  > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/homebridge.gpg] https://repo.homebridge.io stable main" | sudo tee /etc/apt/sources.list.d/homebridge.list > /dev/null
+sudo apt-get update
+sudo apt-get install homebridge
+~~~
+
+# Key Error
+- If `apt-get update` errors out about `The following signatures were invalid: EXPKEYSIG 2E5FB7FC58C58FFB deb.libre.computer <contact+deb@libre.computer>`
+- Follow this instruct to update the base image
+  - https://hub.libre.computer/t/signatures-were-invalid-expkeysig-2e5fb7fc58c58ffb/4166/2 
+  ~~~
+  wget https://deb.libre.computer/repo/pool/main/libr/libretech-keyring/libretech-keyring_2024.05.19_all.deb
+  sudo dpkg -i libretech-keyring_2024.05.19_all.deb
+  sudo apt update
+  ~~~
