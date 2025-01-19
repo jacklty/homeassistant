@@ -223,8 +223,9 @@ systemctl status homebridge
 ~~~
 Login to the web interface by going to http://<ip address of your server>:8581.
 
-## homebridge-alexa-smarthome
+### Install Plugin: homebridge-alexa-smarthome
 To bring Alexa enabled devices into homebridge, we need [homebridge-alexa-smarthome](https://github.com/joeyhage/homebridge-alexa-smarthome)
+- In homebrdige Web UI, look for `homebridge-alexa-smarthome` and install it.
 
 # Key Error
 - If `apt-get update` errors out about `The following signatures were invalid: EXPKEYSIG 2E5FB7FC58C58FFB deb.libre.computer <contact+deb@libre.computer>`
