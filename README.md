@@ -220,6 +220,7 @@ sudo apt-get update
 sudo apt-get install homebridge
 systemctl status homebridge
 ~~~
+Login to the web interface by going to http://<ip address of your server>:8581.
 
 # Key Error
 - If `apt-get update` errors out about `The following signatures were invalid: EXPKEYSIG 2E5FB7FC58C58FFB deb.libre.computer <contact+deb@libre.computer>`
