@@ -226,6 +226,11 @@ Login to the web interface by going to http://<ip address of your server>:8581.
 ### Install Plugin: homebridge-alexa-smarthome
 To bring Alexa enabled devices into homebridge, we need [homebridge-alexa-smarthome](https://github.com/joeyhage/homebridge-alexa-smarthome)
 - In homebrdige Web UI, look for `homebridge-alexa-smarthome` and install it.
+- Configure the plugin as following
+  - Proxy Client Host: <HOST_IP>
+  - Proxy port: 9876
+- It then restarts and open http://<HOST_IP>:9876 and complete the login (amazon account + otp)
+- Now all devices (alexa registered) will show up (e.g. smart thermostats)
 
 # Key Error
 - If `apt-get update` errors out about `The following signatures were invalid: EXPKEYSIG 2E5FB7FC58C58FFB deb.libre.computer <contact+deb@libre.computer>`
