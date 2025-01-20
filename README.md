@@ -241,3 +241,7 @@ To bring Alexa enabled devices into homebridge, we need [homebridge-alexa-smarth
   sudo dpkg -i libretech-keyring_2024.05.19_all.deb
   sudo apt update
   ~~~
+
+### InfluxDB Cloud and Grafana
+- https://docs.influxdata.com/influxdb/v2/tools/grafana/?t=InfluxQL
+- 
