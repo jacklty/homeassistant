@@ -242,6 +242,10 @@ To bring Alexa enabled devices into homebridge, we need [homebridge-alexa-smarth
   sudo apt update
   ~~~
 
-### InfluxDB Cloud and Grafana
+# InfluxDB Cloud and Grafana
 - https://docs.influxdata.com/influxdb/v2/tools/grafana/?t=InfluxQL
-- 
+## InfluxDB Cloud
+### Create a bucket
+- create dbrp mapping for influxql
+  - `influx v1 dbrp create --db homeassistant --rp autogen --org fishylake --bucket-id 5dc17125e0b5ba2b --default`
+  - now we have database mapping called `homeassistant` to the newly created bucket  
