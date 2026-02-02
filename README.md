@@ -198,7 +198,17 @@ WantedBy=multi-user.target
   login=... \
   password=... \
   fishylake.compulty.com
+
+  protocol=cloudflare \
+  zone=compulty.com \
+  login=... \
+  password=... \
+  fishylake.compulty.com
   ~~~
+- To test
+  - `sudo ddclient -daemon=0 -debug -verbose -noquiet`
+- Restart
+  - `sudo systemctl restart ddclient`
 ### How to manually update DDNS?
 ```
 # Obtain the corresponding credential of the DDNS record.
